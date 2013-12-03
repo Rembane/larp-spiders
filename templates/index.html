@@ -11,30 +11,22 @@
 
     <body>
         <div class="pure-g-r">
-            <div class="pure-u-1-3">
-                &nbsp;
-            </div>
-
-            <div class="pure-u-2-3">
+            <div class="pure-u-2-3 center">
             <h1>Ett samlat lajvkalendarium</h1>
 
             {% for item in items %}
-                <div class="margin-1">
+                <div class="item-box">
                     <h3>{{item.title}}</h3>
                     <p>{{item.author}}</p>
                     <ul>
-                        {% for link in links %}
-                        <li>{{item.link}}</li>
+                        {% for link in item.links %}
+                        <li><a href="{{link}}">{{link}}</a></li>
                         {% endfor %}
                     </ul>
 
                     <p>{{item.summary}}</p>
                 </div>
             {% endfor %}
-            </div>
-
-            <div class="pure-u-1-3">
-                &nbsp;
             </div>
         </div>
     </body>

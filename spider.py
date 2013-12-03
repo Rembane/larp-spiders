@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # coding: utf-8
 
 import feedparser
@@ -16,8 +17,9 @@ def main():
     items = []
     fields = ['title', 'author', 'links', 'summary']
     for x in feed.entries:
-        item          = {f : x[f] for f in fields}
-        item['links'] = [y['href'] for y in item['links']]
+        item            = {f : x[f] for f in fields}
+        item['links']   = [y['href'] for y in item['links']]
+        item['summary'] = item['summary'].replace('\n\n', '</p>\n<p>').replace('\n', '<br>\n')
         items.append(item)
 
     template = env.get_template('index.html')
